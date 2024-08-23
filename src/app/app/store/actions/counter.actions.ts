@@ -3,6 +3,7 @@ import { createAction, props, createReducer, on } from '@ngrx/store';
 export const increment = createAction('[Counter] Increment');
 export const decrement = createAction('[Counter] Decrement');
 export const reset = createAction('[Counter] Reset');
+export const undo = createAction('[Counter] Undo');
 
 export const incrementByNumber = createAction(
   '[Counter] Increment By Number',

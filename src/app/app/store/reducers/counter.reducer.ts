@@ -11,34 +11,45 @@ import {
 const initialState: CounterState = {
   count: 0,
   lastUpdated: null,
-  incrementHistory: [],
 };
 
 export const counterReducer = createReducer(
   initialState,
-  on(increment, (state) => ({
-    ...state,
-    count: state.count + 1,
-    lastUpdated: new Date(),
-  })),
-  on(decrement, (state) => ({
-    ...state,
-    count: state.count - 1,
-    lastUpdated: new Date(),
-  })),
+  on(increment, (state) => {
+    const newCount = state.count + 1;
+    return {
+      ...state,
+      count: newCount,
+      lastUpdated: new Date(),
+    };
+  }),
+  on(decrement, (state) => {
+    const newCount = state.count - 1;
+    return {
+      ...state,
+      count: newCount,
+      lastUpdated: new Date(),
+    };
+  }),
   on(reset, (state) => ({
-    ...initialState,
+    ...state,
+    count: 0,
     lastUpdated: new Date(),
   })),
-  on(incrementByNumber, (state, { value }) => ({
-    ...state,
-    count: state.count + value,
-    lastUpdated: new Date(),
-    incrementHistory: [...state.incrementHistory, value],
-  })),
-  on(decrementByNumber, (state, { value }) => ({
-    ...state,
-    count: state.count - value,
-    lastUpdated: new Date(),
-  }))
+  on(incrementByNumber, (state, { value }) => {
+    const newCount = state.count + value;
+    return {
+      ...state,
+      count: newCount,
+      lastUpdated: new Date(),
+    };
+  }),
+  on(decrementByNumber, (state, { value }) => {
+    const newCount = state.count - value;
+    return {
+      ...state,
+      count: newCount,
+      lastUpdated: new Date(),
+    };
+  })
 );

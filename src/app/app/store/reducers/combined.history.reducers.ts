@@ -1,5 +1,4 @@
 import { createReducer, on } from '@ngrx/store';
-
 import {
   decrement,
   decrementByNumber,
@@ -17,21 +16,34 @@ export const counterHistoryReducer = createReducer(
   initialHistoryState,
   on(increment, (state) => ({
     ...state,
-    history: [...state.history, 1],
+    history: [
+      ...state.history,
+      (state.history[state.history.length - 1] || 0) + 1,
+    ],
   })),
   on(decrement, (state) => ({
     ...state,
-    history: [...state.history, -1],
+    history: [
+      ...state.history,
+      (state.history[state.history.length - 1] || 0) - 1,
+    ],
   })),
-  on(reset, () => ({
-    ...initialHistoryState,
+  on(reset, (state) => ({
+    ...state,
+    // Optionally add a reset marker or keep as is
   })),
   on(incrementByNumber, (state, { value }) => ({
     ...state,
-    history: [...state.history, value],
+    history: [
+      ...state.history,
+      (state.history[state.history.length - 1] || 0) + value,
+    ],
   })),
   on(decrementByNumber, (state, { value }) => ({
     ...state,
-    history: [...state.history, -value],
+    history: [
+      ...state.history,
+      (state.history[state.history.length - 1] || 0) - value,
+    ],
   }))
 );

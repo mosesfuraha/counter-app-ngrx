@@ -1,7 +1,6 @@
 export interface CounterState {
   count: number;
   lastUpdated: Date | null;
-  incrementHistory: number[];
 }
 
 export interface CounterHistoryState {
