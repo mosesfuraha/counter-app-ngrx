@@ -1,0 +1,9 @@
+<div class="counter-input">
+  <input
+    type="number"
+    id="counterValue"
+    class="counter"
+    [value]="(count$ | async) ?? 0"
+    readonly
+  />
+</div>

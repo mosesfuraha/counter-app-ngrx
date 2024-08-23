@@ -1,0 +1,17 @@
+<div class="button-group">
+  <div class="buttons">
+    <button (click)="decrement()">Decrement</button>
+    <button (click)="increment()">Increment</button>
+    <button (click)="reset()">Reset</button>
+  </div>
+
+  <div class="value-input">
+    <label for="numberInput"> Add Number</label>
+    <input type="number" id="numberInput" [(ngModel)]="inputValue" />
+  </div>
+
+  <div class="buttons">
+    <button (click)="incrementByNumber()">Increment By Number</button>
+    <button (click)="decrementByNumber()">Decrement By Number</button>
+  </div>
+</div>
