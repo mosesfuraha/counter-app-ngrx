@@ -6,6 +6,7 @@ import {
   increment,
   incrementByNumber,
   reset,
+  undo,
 } from '../actions/counter.actions';
 
 const initialState: CounterState = {
@@ -52,4 +53,5 @@ export const counterReducer = createReducer(
       lastUpdated: new Date(),
     };
   })
+  
 );

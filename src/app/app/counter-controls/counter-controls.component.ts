@@ -7,6 +7,7 @@ import {
   increment,
   incrementByNumber,
   reset,
+  undo,
 } from '../store/actions/counter.actions';
 
 @Component({
@@ -40,5 +41,8 @@ export class CounterControlsComponent {
 
   decrementByNumber() {
     this.store.dispatch(decrementByNumber({ value: this.inputValue }));
+  }
+    undo() {
+    this.store.dispatch(undo());
   }
 }

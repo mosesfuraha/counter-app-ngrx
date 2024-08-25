@@ -5,6 +5,7 @@ import {
   increment,
   incrementByNumber,
   reset,
+  undo,
 } from '../actions/counter.actions';
 import { CounterHistoryState } from '../models/app.state';
 
@@ -30,7 +31,7 @@ export const counterHistoryReducer = createReducer(
   })),
   on(reset, (state) => ({
     ...state,
-    // Optionally add a reset marker or keep as is
+    history: [...state.history, 0],
   })),
   on(incrementByNumber, (state, { value }) => ({
     ...state,
@@ -45,5 +46,12 @@ export const counterHistoryReducer = createReducer(
       ...state.history,
       (state.history[state.history.length - 1] || 0) - value,
     ],
-  }))
+  })),
+  on(undo, (state) => {
+    const newHistory = state.history.slice(0, -1);
+    return {
+      ...state,
+      history: newHistory,
+    };
+  })
 );
